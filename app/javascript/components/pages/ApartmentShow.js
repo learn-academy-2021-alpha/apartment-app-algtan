@@ -9,6 +9,7 @@ class ApartmentShow extends Component {
         return(
             <>
                 <h1>{apartment.street}</h1>
+                <img src={apartment.image_url}></img>
                 <table>
                     <tbody>
                         <tr>
