@@ -10,6 +10,7 @@ import {
 import Header from './components/Header'
 import Home from './pages/Home'
 import ApartmentIndex from './pages/ApartmentIndex'
+import ApartmentShow from './pages/ApartmentShow'
 
 class App extends React.Component {
   constructor(props){
@@ -56,6 +57,11 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={ Home } />
             <Route path="/apartmentindex" render={ (props) => <ApartmentIndex apartments={ this.state.apartments } /> } />
+            <Route path="/apartmentshow/:id" render={ (props) => {
+              const id = +props.match.params.id
+              const foundApartment = this.state.apartments.find(apartment => apartment.id === id)
+              return <ApartmentShow apartment={foundApartment} />
+            }} />
           </Switch>
         </Router>
 
