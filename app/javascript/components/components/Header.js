@@ -40,7 +40,7 @@ const Header = (props) => {
                 <NavLink
                   to="/apartmentindex"
                   className="nav-link">
-                    All Listings
+                    Browse All
                 </NavLink>
               </NavItem>
                 { logged_in &&
@@ -55,7 +55,7 @@ const Header = (props) => {
                 { logged_in &&
                     <NavItem>
                         <NavLink
-                        to="/apartmentindex"
+                        to="/usersapartmentindex"
                         className="nav-link">
                             Your Listings
                         </NavLink>

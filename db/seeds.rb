@@ -33,28 +33,30 @@ end
 
 apartments = [
     {
+        user: User.first,
         street: '4th Ave',
         city: 'San Diego',
         state: 'CA',
         manager: 'Curt',
-        email: 'curt@email.com',
+        email: User.first.email,
         price: '$1300',
         bedrooms: 1,
         bathrooms: 1,
         pets: 'Not allowed',
-        user: User.first
+        image_url: 'https://images1.apartments.com/i2/jPaMur8gVaj8hd7M96e3uNDeeIhVKEEIihwStCD4dug/116/3725-3729-4th-ave-san-diego-ca-building-photo.jpg?p=1'
     },
     {
+        user: User.second,
         street: 'Rancho Mission Road',
         city: 'San Diego',
         state: 'CA',
         manager: 'Leslie',
-        email: 'leslie@email.com',
+        email: User.second.email,
         price: '$1600',
         bedrooms: 2,
         bathrooms: 1,
         pets: 'Not allowed',
-        user: User.second
+        image_url: 'https://ssl.cdn-redfin.com/photo/45/bigphoto/426/190065426_0.jpg'
     }
 ]
 
