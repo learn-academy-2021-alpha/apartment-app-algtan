@@ -34,7 +34,7 @@ end
 apartments = [
     {
         user: User.first,
-        street: '4th Ave',
+        street: '3729 4th Ave',
         city: 'San Diego',
         state: 'CA',
         manager: 'Curt',
@@ -46,8 +46,20 @@ apartments = [
         image_url: 'https://images1.apartments.com/i2/jPaMur8gVaj8hd7M96e3uNDeeIhVKEEIihwStCD4dug/116/3725-3729-4th-ave-san-diego-ca-building-photo.jpg?p=1'
     },
     {
+        user: User.first,
+        street: '3725 4th Ave',
+        city: 'San Diego',
+        state: 'CA',
+        manager: 'Curt',
+        email: User.first.email,
+        price: '$1300',
+        bedrooms: 1,
+        bathrooms: 1,
+        pets: 'Not allowed',
+    },
+    {
         user: User.second,
-        street: 'Rancho Mission Road',
+        street: '6358 Rancho Mission Road',
         city: 'San Diego',
         state: 'CA',
         manager: 'Leslie',

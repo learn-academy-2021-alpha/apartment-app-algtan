@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_205237) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image_url"
+    t.string "image_url", default: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
   end
 
   create_table "users", force: :cascade do |t|
