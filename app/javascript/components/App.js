@@ -7,6 +7,7 @@ import {
   Switch
 } from 'react-router-dom'
 
+import Header from './components/Header'
 import Home from './pages/Home'
 import ApartmentIndex from './pages/ApartmentIndex'
 
@@ -45,21 +46,16 @@ class App extends React.Component {
     } = this.props
     return (
       <React.Fragment>
-        { logged_in &&
-          <div>
-            <a href={sign_out_route }>Sign Out</a>
-          </div>
-        }
-        { !logged_in &&
-          <div>
-            <a href={ sign_in_route }>Sign In</a>
-          </div>
-        }
-
         <Router>
+          <Header
+            logged_in = { logged_in }
+            sign_in_route = { sign_in_route }
+            sign_out_route = { sign_out_route }
+            new_user_route = { new_user_route }
+          />
           <Switch>
             <Route exact path="/" component={ Home } />
-            <Route path="/index" render={ (props) => <ApartmentIndex apartments={ this.state.apartments } /> } />
+            <Route path="/apartmentindex" render={ (props) => <ApartmentIndex apartments={ this.state.apartments } /> } />
           </Switch>
         </Router>
 

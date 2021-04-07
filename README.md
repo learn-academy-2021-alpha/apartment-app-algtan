@@ -33,12 +33,10 @@
     - Registration page
     - Account profile page
         - Shows user's listings
-        - Allows user to change account information
 
 6. What forms will you need?
     - User
         - Create user account
-        - Edit user account
     - Apartment
         - Create apartment listing
         - Edit apartment listing
@@ -64,22 +62,22 @@
 
 9. What are the user flows?
     - Not logged in
-        - 1) View list of apartments
-        - 2) View single apartment instance
+        - 1) View list of apartments (click on Navbar)
+        - 2) View single apartment instance (click from index of listings)
     - Log in
-        - 1) Log in
-        - 2) Show profile page
+        - 1) Log in (click on Navbar)
+        - 2) Show profile page after log in
     - Register
-        - 1) Register
-        - 2) Show profile page
+        - 1) Register (click on Navbar)
+        - 2) Show profile page after log in
     - From profile page (user is logged in)
         - Able to do the following from the profile page:
-            - View all of the user's listings and click on a single instance
-            - Click on a link to create a new listing
-            - Click on a link to change account information
+            - View all of the user's listings (click on Navbar)
+            - Click on a link to create a new listing (click on Navbar)
+            - Click on a single listing instance (click from index of listings)
         - Able to do the following from a single listing:
-            - Edit listing
-            - Delete listing
+            - Edit listing (click from show of listing)
+            - Delete listing (click from show of listing)
 
 10. Protected vs. unprotected pages?
     - Protected
