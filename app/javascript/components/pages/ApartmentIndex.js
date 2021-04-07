@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 
 class ApartmentIndex extends Component {
     render() {
@@ -10,7 +11,10 @@ class ApartmentIndex extends Component {
                     {this.props.apartments && this.props.apartments.map(apartment => {
                         return (
                             <li key={apartment.id}>
-                                {apartment.street}, {apartment.city}
+                                <NavLink
+                                    to={`/apartmentshow/${apartment.id}`}>
+                                        {apartment.street}, {apartment.city}
+                                </NavLink>
                             </li>
                         )
                     })}

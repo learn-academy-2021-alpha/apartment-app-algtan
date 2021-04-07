@@ -23,10 +23,10 @@ const Header = (props) => {
       new_user_route
   } = props
 
-  console.log(logged_in)
-  console.log(sign_in_route)
-  console.log(sign_out_route)
-  console.log(new_user_route)
+  // console.log(logged_in)
+  // console.log(sign_in_route)
+  // console.log(sign_out_route)
+  // console.log(new_user_route)
 
   return (
     <div>
