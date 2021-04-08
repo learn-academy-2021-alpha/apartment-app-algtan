@@ -12,6 +12,7 @@ import Home from './pages/Home'
 import ApartmentIndex from './pages/ApartmentIndex'
 import UsersApartmentIndex from './pages/UsersApartmentIndex'
 import ApartmentShow from './pages/ApartmentShow'
+import ApartmentNew from './pages/ApartmentNew'
 
 class App extends React.Component {
   constructor(props){
@@ -35,6 +36,33 @@ class App extends React.Component {
     })
     .catch(errors => {
       console.log("index errors:", errors)
+    })
+  }
+
+  createNewApartment = (newApartment) => {
+    // console.log('createNewApartment', newApartment)
+    // let json = JSON.stringify(newApartment)
+    // console.log('json', json)
+
+    fetch("http://127.0.0.1:3000/apartments", {
+      body: JSON.stringify(newApartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => {
+      console.log('response', response)
+      if(response.status === 422){
+        alert("Something is wrong with your submission.")
+      }
+      return response.json()
+    })
+    .then(payload => {
+      this.apartmentIndex()
+    })
+    .catch(errors => {
+      console.log("create errors:", errors)
     })
   }
 
@@ -77,6 +105,10 @@ class App extends React.Component {
                 const foundApartment = this.state.apartments.find(apartment => apartment.id === id)
                 return <ApartmentShow apartment={foundApartment} />
               }}
+            />
+            <Route
+              path="/apartmentnew"
+              render={ (props) => <ApartmentNew createNewApartment={ this.createNewApartment } current_user={ current_user }/> }
             />
           </Switch>
         </Router>
