@@ -6,7 +6,7 @@ class ApartmentShow extends Component {
     render() {
         const apartment = this.props.apartment
 
-        console.log(apartment)
+        // console.log(apartment)
 
         return(
             <>
@@ -16,17 +16,32 @@ class ApartmentShow extends Component {
                     <tbody>
                         <tr>
                             <td>
+                                Address
+                            </td>
+                            <td>
                                 {apartment.street}
                                 <br />
                                 {apartment.city}, {apartment.state}
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                Price
+                            </td>
+                            <td>
+                                {apartment.price}
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 
-                <NavLink
-                    to={"/usersapartmentindex"}
-                >
+                <NavLink to={ `/apartmentedit/${this.props.apartment.id}` }>
+                    <Button color="secondary">
+                        Edit Apartment Listing
+                    </Button>
+                </NavLink>
+
+                <NavLink to={"/usersapartmentindex"}>
                     <Button color="secondary" onClick={ () => this.props.deleteApartment(this.props.apartment.id) }>
                         Delete Apartment Listing
                     </Button>
