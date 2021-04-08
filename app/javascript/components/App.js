@@ -66,6 +66,28 @@ class App extends React.Component {
     })
   }
 
+  deleteApartment = (id) => {
+    // console.log(id)
+    return fetch(`http://127.0.0.1:3000/apartments/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => {
+      if(response.status === 422){
+        alert("Something is wrong with your submission.")
+      }
+      return response.json()
+    })
+    .then(payload => {
+      this.apartmentIndex()
+    })
+    .catch(errors => {
+      console.log("delete errors:", errors)
+    })
+  }
+
   render() {
     const {
       logged_in,
@@ -103,7 +125,7 @@ class App extends React.Component {
               render={ (props) => {
                 const id = +props.match.params.id
                 const foundApartment = this.state.apartments.find(apartment => apartment.id === id)
-                return <ApartmentShow apartment={foundApartment} />
+                return <ApartmentShow apartment={foundApartment} deleteApartment={ this.deleteApartment }/>
               }}
             />
             <Route
