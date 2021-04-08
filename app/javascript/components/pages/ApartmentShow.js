@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Button } from 'reactstrap'
 
 class ApartmentShow extends Component {
     render() {
@@ -21,6 +23,14 @@ class ApartmentShow extends Component {
                         </tr>
                     </tbody>
                 </table>
+
+                <NavLink
+                    to={"/usersapartmentindex"}
+                >
+                    <Button color="secondary" onClick={ () => this.props.deleteApartment(this.props.apartment.id) }>
+                        Delete Apartment Listing
+                    </Button>
+                </NavLink>
             </>
         )
     }
