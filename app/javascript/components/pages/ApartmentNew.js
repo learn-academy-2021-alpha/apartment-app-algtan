@@ -17,7 +17,7 @@ class ApartmentNew extends Component {
                 bedrooms: "",
                 bathrooms: "",
                 pets: "",
-                image_url: ""
+                image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
             },
             submitted: false
         }

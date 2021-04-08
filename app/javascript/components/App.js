@@ -40,7 +40,30 @@ class App extends React.Component {
   }
 
   createNewApartment = (newApartment) => {
-    console.log('createNewApartment', newApartment)
+    // console.log('createNewApartment', newApartment)
+    // let json = JSON.stringify(newApartment)
+    // console.log('json', json)
+
+    fetch("http://127.0.0.1:3000/apartments", {
+      body: JSON.stringify(newApartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => {
+      console.log('response', response)
+      if(response.status === 422){
+        alert("Something is wrong with your submission.")
+      }
+      return response.json()
+    })
+    .then(payload => {
+      this.apartmentIndex()
+    })
+    .catch(errors => {
+      console.log("create errors:", errors)
+    })
   }
 
   render() {
