@@ -13,6 +13,8 @@ import ApartmentIndex from './pages/ApartmentIndex'
 import UsersApartmentIndex from './pages/UsersApartmentIndex'
 import ApartmentShow from './pages/ApartmentShow'
 import ApartmentNew from './pages/ApartmentNew'
+import ApartmentEdit from './pages/ApartmentEdit'
+import NotFound from './pages/NotFound'
 
 class App extends React.Component {
   constructor(props){
@@ -66,9 +68,31 @@ class App extends React.Component {
     })
   }
 
+  updateApartment = (editedApartment, id) => {
+    fetch(`http://127.0.0.1:3000/apartments/${id}`, {
+      body: JSON.stringify(editedApartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PATCH"
+    })
+    .then(response => {
+      if(response.status === 422){
+        alert("Something is wrong with your submission.")
+      }
+      return response.json()
+    })
+    .then(payload => {
+      this.apartmentIndex()
+    })
+    .catch(errors => {
+      console.log("update errors:", errors)
+    })
+  }
+
   deleteApartment = (id) => {
     // console.log(id)
-    return fetch(`http://127.0.0.1:3000/apartments/${id}`, {
+    fetch(`http://127.0.0.1:3000/apartments/${id}`, {
       headers: {
         "Content-Type": "application/json"
       },
@@ -109,8 +133,14 @@ class App extends React.Component {
             new_user_route = { new_user_route }
           />
           <Switch>
+
+            {/* Home page */}
             <Route exact path="/" component={ Home } />
+
+            {/* Browse page */}
             <Route path="/apartmentindex" render={ (props) => <ApartmentIndex apartments={ this.state.apartments } /> } />
+            
+            {/* User Listings Index */}
             <Route
               path="/usersapartmentindex"
               render={ (props) => {
@@ -120,6 +150,8 @@ class App extends React.Component {
                   return <UsersApartmentIndex usersApartments={usersApartments} />
               }}
             />
+
+            {/* Show page */}
             <Route
               path="/apartmentshow/:id"
               render={ (props) => {
@@ -128,10 +160,32 @@ class App extends React.Component {
                 return <ApartmentShow apartment={foundApartment} deleteApartment={ this.deleteApartment }/>
               }}
             />
+
+            {/* New form page */}
             <Route
               path="/apartmentnew"
               render={ (props) => <ApartmentNew createNewApartment={ this.createNewApartment } current_user={ current_user }/> }
             />
+
+            {/* Edit form page */}
+            <Route
+              exact path={"/apartmentedit/:id"}
+              render={ (props) => {
+                const id = +props.match.params.id
+                const apartment = this.state.apartments.find(apartment => apartment.id === id)
+                return(
+                  <ApartmentEdit
+                    updateApartment={ this.updateApartment }
+                    apartment={ apartment }
+                    current_user={ current_user }
+                  />
+                )
+              }}
+            />
+
+            {/* Not Found */}
+            <Route component={ NotFound } />
+            
           </Switch>
         </Router>
 
