@@ -5,6 +5,7 @@ import { Button } from 'reactstrap'
 class ApartmentShow extends Component {
     render() {
         const apartment = this.props.apartment
+        const current_user = this.props.current_user
 
         // console.log(apartment)
 
@@ -35,17 +36,23 @@ class ApartmentShow extends Component {
                     </tbody>
                 </table>
 
-                <NavLink to={ `/apartmentedit/${this.props.apartment.id}` }>
-                    <Button color="secondary">
-                        Edit Apartment Listing
-                    </Button>
-                </NavLink>
+                {
+                    current_user.id === apartment.user_id &&
+                    <NavLink to={ `/apartmentedit/${this.props.apartment.id}` }>
+                        <Button color="secondary">
+                            Edit Apartment Listing
+                        </Button>
+                    </NavLink>
+                }
 
-                <NavLink to={"/usersapartmentindex"}>
-                    <Button color="secondary" onClick={ () => this.props.deleteApartment(this.props.apartment.id) }>
-                        Delete Apartment Listing
-                    </Button>
-                </NavLink>
+                {
+                    current_user.id === apartment.user_id &&
+                    <NavLink to={"/usersapartmentindex"}>
+                        <Button color="secondary" onClick={ () => this.props.deleteApartment(this.props.apartment.id) }>
+                            Delete Apartment Listing
+                        </Button>
+                    </NavLink>
+                }
             </>
         )
     }
