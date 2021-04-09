@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 
 import Header from './components/Header'
+// import Footer from './components/Footer'
 import Home from './pages/Home'
 import ApartmentIndex from './pages/ApartmentIndex'
 import UsersApartmentIndex from './pages/UsersApartmentIndex'
@@ -187,6 +188,7 @@ class App extends React.Component {
             <Route component={ NotFound } />
             
           </Switch>
+          {/* <Footer /> */}
         </Router>
 
       </React.Fragment>

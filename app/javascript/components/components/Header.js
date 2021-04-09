@@ -30,7 +30,7 @@ const Header = (props) => {
 
   return (
     <div>
-      <Navbar color="primary" dark expand="md">
+      <Navbar color="info" dark expand="md">
         <Container>
           <NavbarBrand href="/">Apartment App</NavbarBrand>
           <NavbarToggler onClick={toggle} />
@@ -43,6 +43,8 @@ const Header = (props) => {
                     Browse All
                 </NavLink>
               </NavItem>
+            </Nav>
+                <Nav className="ml-auto" navbar>
                 { logged_in &&
                     <NavItem>
                         <NavLink
@@ -61,8 +63,6 @@ const Header = (props) => {
                         </NavLink>
                     </NavItem>
                 }
-            </Nav>
-                <Nav className="ml-auto" navbar>
                 { logged_in &&
                     <NavItem>
                         <a href={ sign_out_route } className="nav-link">Sign Out</a>
