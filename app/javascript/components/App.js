@@ -157,7 +157,7 @@ class App extends React.Component {
               render={ (props) => {
                 const id = +props.match.params.id
                 const foundApartment = this.state.apartments.find(apartment => apartment.id === id)
-                return <ApartmentShow apartment={foundApartment} deleteApartment={ this.deleteApartment }/>
+                return <ApartmentShow apartment={foundApartment} deleteApartment={ this.deleteApartment } current_user={ current_user }/>
               }}
             />
 
